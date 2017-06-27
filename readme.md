@@ -4,11 +4,11 @@ This plugin hides update notices for core, plugin, and theme updates in WordPres
 
 The plugin also hides the Updates link in the WordPress admin menu. If a user for some reason ends up on the updates page anyway, the plugin will also redirect the user back to the dashboard. 
 
-- ✔ Hides core update notices.
-- ✔ Hides plugin update notices. 
-- ✔ Hides theme update notices. 
-- ✔ Removes Updates link in admin menu.
-- ✔ Makes sure the user can't access updates page.
+✔ Hides core update notices.<br>
+✔ Hides plugin update notices.<br>
+✔ Hides theme update notices.<br>
+✔ Removes Updates link in admin menu.<br>
+✔ Makes sure the user can't access updates page.<br>
 
 ___This plugin is intended for agencies and developers who know what they're doing and have good reasons for hiding the updates.___
 
