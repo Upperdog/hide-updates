@@ -7,7 +7,7 @@ The plugin also hides the Updates link in the WordPress admin menu. If a user fo
 ✔ Hides core update notices.<br>
 ✔ Hides plugin update notices.<br>
 ✔ Hides theme update notices.<br>
-✔ Removes Updates link in admin menu.<br>
+✔ Removes Updates link in admin menu and admin bar.<br>
 ✔ Makes sure the user can't access updates page.<br>
 
 ___This plugin is intended for agencies and developers who know what they're doing and have good reasons for hiding the updates.___
