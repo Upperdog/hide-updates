@@ -35,31 +35,33 @@ if ( !function_exists( 'wp_get_current_user' ) ) {
 class HideUpdates {
 	
 	function __construct() {
-		
-		global $hide_updates_current_user;
-		$hide_updates_current_user = wp_get_current_user();
-		
-		global $hide_update_default_user_ids;
-		$hide_update_default_user_ids = array( 1 );
-
-		global $blocked_admin_pages;
-		$blocked_admin_pages = array( 'update-core.php' );
-		
 		add_action( 'admin_menu', array( $this, 'hide_updates_submenu_page' ) );
-		add_action( 'admin_init', array( $this, 'hide_updates_block_pages') );
-		add_action( 'admin_enqueue_scripts', array( $this, 'hide_updates_enqueue_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'hide_updates_enqueue_scripts' ) );
+		add_action( 'admin_init', array( $this, 'block_admin_pages') );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_plugin_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_styles' ) );
+	}
+	
+	/**
+	 * Check if current user is allowed to see updates
+	 */
+	function allow_current_user() {
+		
+		$current_user = wp_get_current_user();
+		$default_allowed_users = get_super_admins();
+		$allowed_users = apply_filters( 'hide_updates_allowed_users', $default_allowed_users );
+		
+		if ( in_array( $current_user->user_login, $allowed_users ) ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
 	 * Remove submenu pages for users not allowed to see WordPress updates.
 	 */
 	function hide_updates_submenu_page() {
-		
-		global $hide_updates_current_user, $hide_update_default_user_ids;
-		$hide_updates_allowed_user_ids = apply_filters( 'hide_updates_allowed_user_ids', $hide_update_default_user_ids );
-		
-		if ( !in_array( $hide_updates_current_user->ID, $hide_updates_allowed_user_ids ) ) {
+		if ( !$this->allow_current_user() ) {
 			remove_submenu_page( 'index.php', 'update-core.php' );
 		}
 	}
@@ -67,16 +69,42 @@ class HideUpdates {
 	/**
 	 * Block access to certain admin pages for users not allowed to see WordPress updates. 
 	 */
-	function hide_updates_block_pages() {
+	function block_admin_pages() {
 		
-		global $hide_updates_current_user, $hide_update_default_user_ids, $pagenow, $blocked_admin_pages;
-		$hide_updates_allowed_user_ids = apply_filters( 'hide_updates_allowed_user_ids', $hide_update_default_user_ids );
-		
-		if ( !in_array( $hide_updates_current_user->ID, $hide_updates_allowed_user_ids ) ) {
-			
-			if ( in_array( $pagenow, $blocked_admin_pages ) ) {
-				wp_redirect( admin_url( '/' ) );
-				exit;
+		if ( !$this->allow_current_user() ) {
+			global $pagenow;
+
+			$blocked_admin_pages = array( 
+				'update-core.php', 
+				'plugins.php?plugin_status=upgrade'
+			);
+
+			$block_current_page = false; 
+					
+			foreach ( $blocked_admin_pages as $block_admin_page ) {
+				$block_admin_page = explode( '?', $block_admin_page );
+				
+				if ( $pagenow == $block_admin_page[ 0 ] ) {
+					$block_current_page = true;
+				}
+				
+				if ( isset( $block_admin_page[ 1 ] ) ) {
+					parse_str( $block_admin_page[ 1 ], $query_params );
+					
+					foreach ( $query_params as $key => $value ) {
+						if ( isset( $_GET[ $key ] ) && $_GET[ $key ] == $value ) {
+							$block_current_page = true;
+							break;
+						} else {
+							$block_current_page = false;
+						}
+					}
+				}
+				
+				if ( $block_current_page ) {
+					wp_redirect( admin_url( '/' ) );
+					exit;
+				}
 			}
 		}
 	}
@@ -84,12 +112,8 @@ class HideUpdates {
 	/**
 	 * Enqueue plugin stylesheet to hide elements for users not allowed to see WordPress updates.  
 	 */
-	function hide_updates_enqueue_scripts() {
-		
-		global $hide_updates_current_user, $hide_update_default_user_ids;
-		$hide_updates_allowed_user_ids = apply_filters( 'hide_updates_allowed_user_ids', $hide_update_default_user_ids );
-		
-		if ( !in_array( $hide_updates_current_user->ID, $hide_updates_allowed_user_ids ) ) {
+	function enqueue_plugin_styles() {
+		if ( !$this->allow_current_user() ) {
 			wp_enqueue_style( 'hide_updates_css', plugins_url( 'hide-updates.css', __FILE__ ) );
 		}
 	}

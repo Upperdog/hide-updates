@@ -3,7 +3,13 @@
 #adminmenu .update-plugins, 
 .theme-info .notice, 
 .wp-heading-inline .theme-count, 
-table.plugins .update-message {
+table.plugins .update-message, 
+.theme-browser .update-message, 
+body.plugins-php ul.subsubsub li.upgrade {
 	display: none;
 	visibility: hidden;
+}
+
+.plugin-update-tr {
+	height: 1px;
 }
