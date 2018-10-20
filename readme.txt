@@ -2,10 +2,11 @@
 Contributors: Upperdog, Gesen
 Tags: update, updates, notices, core updates, plugin updates, theme updates, 
 Requires at least: 3.0
-Tested up to: 4.9
+Tested up to: 5.0
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://paypal.me/gesen
 
 This plugin hides update notices for core, plugin, and theme updates in WordPress admin for all users except super admins.
 
