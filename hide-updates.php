@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Hide Updates
- * Description: This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except site admins or specified users.
- * Version: 1.1.1
+ * Description: This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except first registered user or specified users.
+ * Version: 1.1.2
  * Author: Upperdog
  * Author URI: https://upperdog.com
  * Author Email: hello@upperdog.com
@@ -42,7 +42,8 @@ class HideUpdates {
 	 */
 	function allow_current_user() {
 		$current_user = wp_get_current_user();
-		$default_allowed_users = get_super_admins();
+		$default_user = get_user_by( 'ID', 1 );
+		$default_allowed_users = array( $default_user->data->user_login );
 		$allowed_users = apply_filters( 'hide_updates_allowed_users', $default_allowed_users );
 		
 		if ( in_array( $current_user->user_login, $allowed_users ) ) {
