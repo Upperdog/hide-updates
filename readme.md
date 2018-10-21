@@ -2,11 +2,11 @@
 
 This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except site admins or specified users (see example below). It's useful for developers and agencies who take care of updates and maintenance of their clients sites and wants to hide the notices for other users.
 
-✔ Hides Wordpress core update notices.
-✔ Hides plugin update notices.
-✔ Hides theme update notices.
-✔ Hides Updates link in admin menu and admin bar.
-✔ Blocks users who are not allowed to see updates from accessing the updates page.
+* Hides Wordpress core update notices.
+* Hides plugin update notices.
+* Hides theme update notices.
+* Hides Updates link in admin menu and admin bar.
+* Blocks users who are not allowed to see updates from accessing the updates page.
 
 ___This plugin is intended for developers and agencies who have good reasons for hiding the updates.___
 
