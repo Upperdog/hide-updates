@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: Hide Updates
- * Description: This plugin hides update notices for core, plugin, and theme updates in WordPress admin for all users **except super admins**. It's useful for agencies or developers who take care of updates and maintenance of a client's site and wants to hide the notices for other users.
- * Version: 1.0
+ * Description: This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except site admins or specified users.
+ * Version: 1.1.0
  * Author: Upperdog
  * Author URI: https://upperdog.com
  * Author Email: hello@upperdog.com
  * License: GPLv2 or later
 
- Copyright 2017 Upperdog (email : hello@upperdog.com)
+ Copyright 2018 Upperdog (email : hello@upperdog.com)
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License, version 2, as 
