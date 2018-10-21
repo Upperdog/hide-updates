@@ -2,7 +2,7 @@
     "name": "upperdog/hide-updates",
     "description": "This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except site admins or specified users.",
     "homepage": "https://github.com/upperdog/hide-updates",
-    "license": "GPLv2",
+    "license": "GPL-2.0-or-later",
     "type": "wordpress-plugin",
     "authors": [
         {
