@@ -43,6 +43,11 @@ No, not at the moment. All updates will be hidden.
 
 ## Changelog
 
+### 1.1.1
+
+* Release date: 2018-10-21
+* Remove include of wp-includes/pluggable.php to be able to use wp_get_current_user(). Unnecessary to include file.
+
 ### 1.1
 
 * Release date: 2018-10-21
