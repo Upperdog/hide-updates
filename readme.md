@@ -1,6 +1,6 @@
 # Hide Updates
 
-This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except site admins or specified users (see example below). It's useful for developers and agencies who take care of updates and maintenance of their clients sites and wants to hide the notices for other users.
+This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except first registered user (the one who installed the site) or specified users (see example below). It's useful for developers and agencies who take care of updates and maintenance of their clients sites and wants to hide the notices for other users.
 
 * Hides Wordpress core update notices.
 * Hides plugin update notices.
@@ -10,7 +10,7 @@ This plugin hides update notifications for WordPress core, plugin, and theme upd
 
 ___This plugin is intended for developers and agencies who have good reasons for hiding the updates.___
 
-## Plugin filter for developers
+## Specify allowed users
 
 Developers can use the `hide_updates_allowed_users` filter to specify which users are allowed to see update notifications. Add the username of each allowed user to an array like in the following example: 
 
@@ -21,6 +21,10 @@ function site_hide_updates_allowed_users() {
 }
 add_filter( 'hide_updates_allowed_users', 'site_hide_updates_allowed_users' );
 ```
+
+## Compatibility with remote management services
+
+This plugin has only been tested with ManageWP. ManageWP has to connect to the site with a user account that is allowed to see updates. 
 
 ## Manual installation
 
@@ -42,6 +46,12 @@ If you update WordPress core, plugin, and theme updates through remote managemen
 No, not at the moment. All updates will be hidden.
 
 ## Changelog
+
+### 1.1.2
+
+* Release date: 2018-10-21
+* Add first registered user (usually the one who installed the site) as default user allowed to see updates.
+* Add more precise CSS selector for hiding plugin updates in admin menu to avoid breaking other plugins using the .update-plugins class on other notifications.
 
 ### 1.1.1
 
