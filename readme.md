@@ -47,6 +47,11 @@ No, not at the moment. All updates will be hidden.
 
 ## Changelog
 
+### 1.1.3
+
+* Release date: 2018-10-28
+* Avoid error if default user with ID 1 doesn't exist.
+
 ### 1.1.2
 
 * Release date: 2018-10-21
