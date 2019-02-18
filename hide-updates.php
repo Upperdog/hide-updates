@@ -82,7 +82,7 @@ class HideUpdates {
 				'plugins.php?plugin_status=upgrade'
 			);
 
-			$block_current_page = false; 
+			$block_current_page = false;
 					
 			foreach ( $blocked_admin_pages as $block_admin_page ) {
 				$block_admin_page = explode( '?', $block_admin_page );
