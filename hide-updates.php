@@ -116,7 +116,7 @@ class HideUpdates {
 	 * Enqueue plugin stylesheet to hide elements for users not allowed to see WordPress updates.  
 	 */
 	function enqueue_plugin_styles() {
-		if ( !$this->allow_current_user() ) {
+		if ( is_user_logged_in() && !$this->allow_current_user() ) {
 			wp_enqueue_style( 'hide_updates_css', plugins_url( 'hide-updates.css', __FILE__ ) );
 		}
 	}
