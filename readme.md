@@ -47,6 +47,11 @@ No, not at the moment. All updates will be hidden.
 
 ## Changelog
 
+### 1.1.4
+
+* Release date: 2019-05-28
+* Check if user is logged in before enqueuing plugin CSS. Thanks Vincent Klaiber (@vinkla) for the help! 
+
 ### 1.1.3
 
 * Release date: 2018-10-28
