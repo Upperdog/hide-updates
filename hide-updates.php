@@ -53,11 +53,7 @@ class HideUpdates {
 
 		$allowed_users = apply_filters( 'hide_updates_allowed_users', $default_allowed_users );
 		
-		if ( in_array( $current_user->user_login, $allowed_users ) ) {
-			return true;
-		} else {
-			return false;
-		}
+		return in_array( $current_user->user_login, $allowed_users );
 	}
 	
 	/**
