@@ -47,6 +47,12 @@ No, not at the moment. All updates will be hidden.
 
 ## Changelog
 
+### 1.1.5
+
+* Release date: 2019-12-18
+* Minor refactoring and coding standards overhaul.
+* Align Github and WordPress.org version release numbers.
+
 ### 1.1.4
 
 * Release date: 2019-05-28
