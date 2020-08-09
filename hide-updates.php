@@ -5,12 +5,12 @@
  * @package   hide-updates
  * @link      https://github.com/upperdog/hide-updates
  * @author    Upperdog <hello@upperdog.com>
- * @copyright 2018-2019 Upperdog
+ * @copyright 2018-2020 Upperdog
  * @license   GPLv2 or later
  *
  * Plugin Name:  Hide Updates
  * Description:  This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except first registered user or specified users.
- * Version:      1.1.5
+ * Version:      1.1.6
  * Author:       Upperdog
  * Author URI:   https://upperdog.com
  * Author Email: hello@upperdog.com
@@ -33,9 +33,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 class HideUpdates {
 
 	/**
-	 * Class construct.
+	 * Class constructor.
 	 */
-	function __construct() {
+	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'hide_updates_submenu_page' ) );
 		add_action( 'admin_init', array( $this, 'block_admin_pages' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_plugin_styles' ) );
@@ -44,8 +44,12 @@ class HideUpdates {
 
 	/**
 	 * Check if current user is allowed to see updates.
+	 *
+	 * By default, only the user who installed the site is allowed to see updates.
+	 * Developers can override this by utilizing the hide_updates_allowed_users
+	 * filter which takes an array of usernames as argument.
 	 */
-	function allow_current_user() {
+	public function allow_current_user() {
 		$current_user    = wp_get_current_user();
 		$default_user_id = 1;
 
@@ -58,26 +62,22 @@ class HideUpdates {
 
 		$allowed_users = apply_filters( 'hide_updates_allowed_users', $default_allowed_users );
 
-		if ( in_array( $current_user->user_login, $allowed_users ) ) {
-			return true;
-		} else {
-			return false;
-		}
+		return in_array( $current_user->user_login, $allowed_users );
 	}
 
 	/**
 	 * Remove submenu pages for users not allowed to see WordPress updates.
 	 */
-	function hide_updates_submenu_page() {
+	public function hide_updates_submenu_page() {
 		if ( ! $this->allow_current_user() ) {
 			remove_submenu_page( 'index.php', 'update-core.php' );
 		}
 	}
 
 	/**
-	 * Block access to certain admin pages for users not allowed to see WordPress updates.
+	 * Block access to certain admin pages for users not allowed to see updates.
 	 */
-	function block_admin_pages() {
+	public function block_admin_pages() {
 
 		if ( ! $this->allow_current_user() ) {
 			global $pagenow;
@@ -118,9 +118,12 @@ class HideUpdates {
 	}
 
 	/**
-	 * Enqueue plugin stylesheet to hide elements for users not allowed to see WordPress updates.
+	 * Enqueue plugin stylesheet.
+	 *
+	 * Updates are hidden using CSS to allow third-party site maintenance
+	 * services to still access the updates.
 	 */
-	function enqueue_plugin_styles() {
+	public function enqueue_plugin_styles() {
 		if ( is_user_logged_in() && ! $this->allow_current_user() ) {
 			wp_enqueue_style( 'hide_updates_css', plugins_url( 'hide-updates.css', __FILE__ ) );
 		}
