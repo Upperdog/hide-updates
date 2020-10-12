@@ -1,29 +1,18 @@
 <?php
 /**
- * Hide Updates plugin for WordPress
- *
- * @package   hide-updates
- * @link      https://github.com/upperdog/hide-updates
- * @author    Upperdog <hello@upperdog.com>
- * @copyright 2018-2020 Upperdog
- * @license   GPLv2 or later
- *
  * Plugin Name:  Hide Updates
- * Description:  This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except first registered user or specified users.
+ * Description:  This plugin hides update notifications for core, plugin, and theme updates in the WordPress admin.
  * Version:      1.1.6
  * Author:       Upperdog
  * Author URI:   https://upperdog.com
  * Author Email: hello@upperdog.com
- * License:      GPLv2 or later
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * License:      GPLv3
+ * 
+ * @package   hide-updates
+ * @link      https://github.com/upperdog/hide-updates
+ * @author    Upperdog <hello@upperdog.com>
+ * @copyright Upperdog
+ * @license   GPLv3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
