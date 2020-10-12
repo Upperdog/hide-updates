@@ -1,2 +1,3 @@
-wordpress/
-/vendor/
+.DS_Store
+wordpress
+vendor
