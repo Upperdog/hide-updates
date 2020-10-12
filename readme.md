@@ -50,6 +50,12 @@ No. All updates will be hidden.
 
 ## Changelog
 
+### 1.1.6
+
+* Release date: 2020-
+* Simplify return statement in allow_current_user(). Thanks Vincent Klaiber (@vinkla) for the help!
+* Minor refactoring and coding standards overhaul.
+
 ### 1.1.5
 
 * Release date: 2019-12-18
@@ -59,7 +65,7 @@ No. All updates will be hidden.
 ### 1.1.4
 
 * Release date: 2019-05-28
-* Check if user is logged in before enqueuing plugin CSS. Thanks Vincent Klaiber (@vinkla) for the help! 
+* Check if user is logged in before enqueuing plugin CSS. Thanks Vincent Klaiber (@vinkla) for the help!
 
 ### 1.1.3
 
