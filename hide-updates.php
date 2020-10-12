@@ -12,7 +12,7 @@
  * @link      https://github.com/upperdog/hide-updates
  * @author    Upperdog <hello@upperdog.com>
  * @copyright Upperdog
- * @license   GPLv3
+ * @license   GPL-3.0-or-later
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
