@@ -1,30 +1,33 @@
 # Hide Updates
 
-This plugin hides update notifications for WordPress core, plugin, and theme updates in WordPress admin for all users except first registered user (the one who installed the site) or specified users (see example below). It's useful for developers and agencies who take care of updates and maintenance of their clients sites and wants to hide the notices for other users.
+This plugin hides update notifications for core, plugin, and theme updates in the WordPress admin. It's useful for developers and agencies who manage updates through Composer or remote management services like ManageWP, and therefore wants to hide update notices for other users.
+
+## Features
 
 * Hides Wordpress core update notices.
 * Hides plugin update notices.
 * Hides theme update notices.
-* Hides Updates link in admin menu and admin bar.
-* Blocks users who are not allowed to see updates from accessing the updates page.
+* Hides updates link in admin menu and admin bar.
+* Blocks access to the updates page for users who are not allowed to see updates.
+* Enables developers to specify which users can see updates.
 
-___This plugin is intended for developers and agencies who have good reasons for hiding the updates.___
+## Worth noting
 
-## Specify allowed users
+This plugin is intended for developers and agencies who have good reasons for hiding the updates, for example if they manage updates through Composer or remote management services like ManageWP. This plugin has been tested with ManageWP and ManageWP needs to connect to the site with a user account that is allowed to see updates.
 
-Developers can use the `hide_updates_allowed_users` filter to specify which users are allowed to see update notifications. Add the username of each allowed user to an array like in the following example: 
+## Specify who can see updates
+
+By default, the plugin allows the first registered user (the one who installed the site) to see updates. Developers can use the `hide_updates_allowed_users` filter to specify which users are allowed to see update notifications.
+
+The following example will allow only users with usernames bill and melinda to see updates:
 
 ```
 function site_hide_updates_allowed_users() {
-    $allowed_users = array( 'charlotte', 'bob' );
+    $allowed_users = array( 'bill', 'melinda' );
     return $allowed_users;
 }
 add_filter( 'hide_updates_allowed_users', 'site_hide_updates_allowed_users' );
-```
-
-## Compatibility with remote management services
-
-This plugin has only been tested with ManageWP. ManageWP has to connect to the site with a user account that is allowed to see updates. 
+``` 
 
 ## Manual installation
 
@@ -35,15 +38,15 @@ This plugin has only been tested with ManageWP. ManageWP has to connect to the s
 
 ### Who is this plugin for?
 
-Developers and agencies who want to hide updates from their clients, or anyone who install plugins with Composer and wants to take care of updates that way.
+This plugin is aimed for developers and agencies who manage core, plugin, and translation updates through Composer or remote management services like ManageWP.
 
 ### Why would you want to hide updates?
 
-If you update WordPress core, plugin, and theme updates through remote management services like ManageWP, or if you install plugins through Composer, you may want to hide updates in the WordPress admin.
+If you're a developer or agency responsible for updating client sites, you may want to hide updates for other users who should not install updates.
 
 ### Can I choose to hide only some types of updates?
 
-No, not at the moment. All updates will be hidden.
+No. All updates will be hidden.
 
 ## Changelog
 
